@@ -1,0 +1,24 @@
+.textfield {
+  display: flex;
+  flex-direction: column;
+}
+
+.label_text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #404040;
+  margin-bottom: 8px;
+}
+
+input {
+  height: 40px;
+  max-width: 320px;
+  box-sizing: border-box;
+  border: 2px solid #E0E0E0;
+  border-radius: 8px;
+}
+input:focus-visible {
+  outline: 2px solid #01959F;
+}
