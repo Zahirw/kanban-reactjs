@@ -2,6 +2,7 @@ import Label from './component/label/Label';
 import Textfield from './component/textfield/Textfield';
 import Description from './component/description/Description';
 import DialogMenu from './component/dialogMenu/DialogMenu';
+import Button from './component/button/Button';
 
 function App() {
   return (
@@ -32,6 +33,18 @@ function App() {
         placeholder='Input here'
       />
       <DialogMenu />
+      <Button 
+        type='submit'
+        name='Save Task'
+      />
+      <Button 
+        type='cancel'
+        name='Cancel'
+      />
+      <Button 
+        type='delete'
+        name='Delete'
+      />
     </div>
   );
 }
