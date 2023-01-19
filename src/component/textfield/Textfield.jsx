@@ -6,7 +6,7 @@ const Textfield = (props) => {
   return (
     <div className='textfield'>
       <label className='label_text'>{props.label}</label>
-      <input type="text" placeholder={props.placeholder}/>
+      <input className={props.type ? 'progress' : ''} type="text" placeholder={props.placeholder}/>
     </div>
   )
 }

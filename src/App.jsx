@@ -9,9 +9,23 @@ function App() {
       <Label 
         type="task1"
       />
+      <Label 
+        type="task2"
+      />
+      <Label 
+        type="task3"
+      />
+      <Label 
+        type="task4"
+      />
       <Textfield 
         label='Title'
         placeholder='Input here'
+      />
+      <Textfield 
+        label='Title'
+        placeholder='70%'
+        type='progress'
       />
       <Description 
         label='Description'
