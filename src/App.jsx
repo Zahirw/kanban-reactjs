@@ -1,6 +1,7 @@
 import Label from './component/label/Label';
 import Textfield from './component/textfield/Textfield';
 import Description from './component/description/Description';
+import DialogMenu from './component/dialogMenu/DialogMenu';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         label='Description'
         placeholder='Input here'
       />
+      <DialogMenu />
     </div>
   );
 }
