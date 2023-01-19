@@ -1,0 +1,73 @@
+$label-color-task1: #4DB5BC;
+$background-task1: #F7FEFF;
+
+$label-color-task2: #FEEABC;
+$background-task2: #FFFCF5;
+
+$label-color-task3: #F5B1B7;
+$background-task3: #FFFAFA;
+
+$label-color-task4: #B8DBCA;
+$background-task4: #F8FBF9;
+
+$font-text: 'Nunito Sans';
+
+.task1 {
+  width: 88px;
+  height: 24px;
+  color: $label-color-task1;
+  border: 1px solid $label-color-task1;
+  background-color: $background-task1;
+  border-radius: 4px;
+  font-family: $font-text;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.task2 {
+  width: 88px;
+  height: 24px;
+  color: $label-color-task2;
+  border: 1px solid $label-color-task2;
+  background-color: $background-task2;
+  border-radius: 4px;
+  font-family: $font-text;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.task3 {
+  width: 88px;
+  height: 24px;
+  color: $label-color-task3;
+  border: 1px solid $label-color-task3;
+  background-color: $background-task3;
+  border-radius: 4px;
+  font-family: $font-text;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.task4 {
+  width: 88px;
+  height: 24px;
+  color: $label-color-task4;
+  border: 1px solid $label-color-task4;
+  background-color: $background-task4;
+  border-radius: 4px;
+  font-family: $font-text;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+}
