@@ -1,5 +1,6 @@
 import Label from './component/label/Label';
 import Textfield from './component/textfield/Textfield';
+import Description from './component/description/Description';
 
 function App() {
   return (
@@ -9,6 +10,10 @@ function App() {
       />
       <Textfield 
         label='Title'
+        placeholder='Input here'
+      />
+      <Description 
+        label='Description'
         placeholder='Input here'
       />
     </div>
