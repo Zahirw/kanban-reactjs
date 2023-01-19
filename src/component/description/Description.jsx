@@ -1,11 +1,11 @@
 import React from 'react'
 
-import './description.scss'
+import styles from './description.module.scss'
 
 const Description = (props) => {
   return (
-    <div className='description'>
-      <label className='label_text'>{props.label}</label>
+    <div className={styles.description}>
+      <label className={styles.label_text}>{props.label}</label>
       <textarea placeholder={props.placeholder}/>
     </div>
   )

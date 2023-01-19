@@ -3,6 +3,7 @@ import Textfield from './component/textfield/Textfield';
 import Description from './component/description/Description';
 import DialogMenu from './component/dialogMenu/DialogMenu';
 import Button from './component/button/Button';
+import Modal from './component/modal/Modal';
 
 function App() {
   return (
@@ -44,6 +45,20 @@ function App() {
       <Button 
         type='delete'
         name='Delete'
+      />
+      <Modal 
+        visible={false}
+        title='Add New Group'
+        type='description'
+      />
+      <Modal 
+        visible={false}
+        title='Create Task'
+        type='task'
+      />
+      <Modal 
+        visible={true}
+        isDelete={true}
       />
     </div>
   );
