@@ -24,7 +24,7 @@ const Modal = (props) => {
               />
               <h4>Delete Task</h4>
             </div>
-            <CloseIcon />
+            <CloseIcon onClick={props.close}/>
           </div>
           <p className={styles.caption_delete}>Are you sure want to delete this task? your action can’t be reverted.</p>
           <div style={{marginTop: '25px', display: 'flex', alignItems: 'center', justifyContent:'flex-end'}}>
@@ -32,6 +32,7 @@ const Modal = (props) => {
               <Button 
                 type='cancel'
                 name='Cancel'
+                onClick={props.close}
               />
             </div>
             <Button 
@@ -44,7 +45,7 @@ const Modal = (props) => {
         <div className={styles.modal_box} style={{height: props.type === 'task' ? '311px' : '369px'}}>
           <div style={{display: 'flex', alignItems: 'center', justifyContent:'space-between'}}>
             <h4>{props.title}</h4>
-            <CloseIcon />
+            <CloseIcon onClick={props.close}/>
           </div>
           <Textfield 
             label='Task Name'
@@ -70,6 +71,7 @@ const Modal = (props) => {
               <Button 
                 type='cancel'
                 name='Cancel'
+                onClick={props.close}
               />
             </div>
             <Button 

@@ -7,6 +7,7 @@ import Label from '../label/Label'
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { ReactComponent as SettingIcon } from '../../assets/icon/settingIcon.svg'
 import ButtonNewTask from '../button/ButtonNewTask'
+import Modal from '../modal/Modal';
 
 // services
 import { getListItems } from "../../services/items/itemsService";
@@ -15,6 +16,7 @@ import styles from './groupTask.module.scss'
 
 const GroupTask = (props) => {
   const [items, setItems] = useState([])
+  const [modal, setModal] =  useState(false)
   const dispatch = useDispatch()
 
   const dateGroup = () => {
@@ -30,6 +32,10 @@ const GroupTask = (props) => {
       default:
         break;
     }
+  }
+
+  const handleModal = () => {
+    setModal(!modal)
   }
   
   const fetchItems = async() => {
@@ -100,7 +106,13 @@ const GroupTask = (props) => {
           </div>
         </div>
       )}
-      <ButtonNewTask />
+      <ButtonNewTask onClick={handleModal}/>
+      <Modal 
+        visible={modal}
+        title='Create Task'
+        type='task'
+        close={handleModal}
+      />
       {/* <div className={styles.card_notask}>
         <p>No Task</p>
       </div> */}
