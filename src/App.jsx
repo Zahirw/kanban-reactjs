@@ -1,9 +1,13 @@
 import { useEffect } from "react";
-import Button from "./component/button/Button";
-import { getListTodos } from "./services/todos/todosService";
 import { useDispatch, useSelector } from 'react-redux';
 import { setTodos } from "./store/todos";
+
+// Component
+import Button from "./component/button/Button";
 import GroupTask from "./component/groupTask/GroupTask";
+
+// Services
+import { getListTodos } from "./services/todos/todosService";
 
 import styles from './app.module.scss'
 function App() {
@@ -54,6 +58,7 @@ function App() {
         {todos.map(item => 
           <GroupTask 
             key={item.id}
+            id={item.id}
             type={`task${item.id}`}
           />
         )}
