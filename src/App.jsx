@@ -1,8 +1,23 @@
+import { useEffect } from "react";
 import Button from "./component/button/Button";
-import ButtonNewTask from "./component/button/ButtonNewTask";
+import { getListTodos } from "./services/todos/todos";
 
 import styles from './app.module.scss'
 function App() {
+
+  const fetchTodos = async() => {
+    await getListTodos()
+      .then(response => {
+        console.log(response)
+      })
+      .catch(err => {
+        console.error(err)
+    })
+  }
+  useEffect(() => {
+    fetchTodos()
+  }, [])
+
   return (
     <div className="App">
       <header>
@@ -13,7 +28,7 @@ function App() {
         />
       </header>
       <div className={styles.body}>
-        <ButtonNewTask />
+        asd
       </div>
     </div>
   );

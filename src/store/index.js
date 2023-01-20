@@ -3,7 +3,22 @@ import { createSlice } from '@reduxjs/toolkit'
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
-    value: 0
+    board1: {
+      key: 1,
+      card: []
+    },
+    board2: {
+      key: 2,
+      card: []
+    },
+    board3: {
+      key: 3,
+      card: []
+    },
+    board4: {
+      key: 4,
+      card: []
+    },
   },
   reducers: {
     increment: state => {
