@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './store/index'
+import kanbanReducer from './store/todos'
 
 export default configureStore({
   reducer: {
-    counter: counterReducer
+    todos: kanbanReducer
   }
 })

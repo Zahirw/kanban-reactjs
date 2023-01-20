@@ -1,14 +1,37 @@
 import { useEffect } from "react";
 import Button from "./component/button/Button";
-import { getListTodos } from "./services/todos/todos";
+import { getListTodos } from "./services/todos/todosService";
+import { useDispatch, useSelector } from 'react-redux';
+import { setTodos } from "./store/todos";
+import GroupTask from "./component/groupTask/GroupTask";
 
 import styles from './app.module.scss'
 function App() {
+  const todos = useSelector((state) => state.todos.todos)
+  const dispatch = useDispatch()
 
   const fetchTodos = async() => {
     await getListTodos()
       .then(response => {
-        console.log(response)
+        // console.log(response.data)
+        dispatch(setTodos(
+          [
+            {
+              "id": 1,
+              "title": "Group Task 1",
+              "created_by": "1",
+              "created_at": "2021-04-20T23:47:50.046Z",
+              "updated_at": "2021-04-20T23:47:50.046Z"
+            },
+            {
+              "id": 2,
+              "title": "Group Task 2",
+              "created_by": "1",
+              "created_at": "2021-04-21T00:04:23.906Z",
+              "updated_at": "2021-04-21T00:04:23.906Z"
+            }
+          ]
+        ))
       })
       .catch(err => {
         console.error(err)
@@ -16,7 +39,7 @@ function App() {
   }
   useEffect(() => {
     fetchTodos()
-  }, [])
+  },[])
 
   return (
     <div className="App">
@@ -28,7 +51,12 @@ function App() {
         />
       </header>
       <div className={styles.body}>
-        asd
+        {todos.map(item => 
+          <GroupTask 
+            key={item.id}
+            type={`task${item.id}`}
+          />
+        )}
       </div>
     </div>
   );
