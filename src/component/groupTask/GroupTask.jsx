@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux';
 import { setItems } from '../../store/todos';
 
 // Component
-import Label from '../label/Label'
 import LinearProgress from '@mui/material/LinearProgress';
-import { ReactComponent as SettingIcon } from '../../assets/icon/settingIcon.svg'
+import Popover from '@mui/material/Popover';
+import Label from '../label/Label'
 import ButtonNewTask from '../button/ButtonNewTask'
 import Modal from '../modal/Modal';
+import DialogMenu from '../dialogMenu/DialogMenu';
+import { ReactComponent as SettingIcon } from '../../assets/icon/settingIcon.svg'
 
 // services
 import { getListItems } from "../../services/items/itemsService";
@@ -20,7 +22,9 @@ const GroupTask = (props) => {
   const [modal, setModal] =  useState(false)
   const [name, setName] = useState('')
   const [progress, setProgress] = useState('')
+  const [anchorEl, setAnchorEl] = useState(null);
   const dispatch = useDispatch()
+  const open = Boolean(anchorEl);
 
   const dateGroup = () => {
     switch (props.type) {
@@ -119,9 +123,31 @@ const GroupTask = (props) => {
                   borderRadius: '25px',
                 }}
               />
-              <p>{record.progress_percentage}</p>
+              <p>{record.progress_percentage}%</p>
               <div style={{textAlign: 'right'}}>
-                <SettingIcon />
+                <SettingIcon 
+                  style={{cursor: 'pointer'}}
+                  aria-describedby={props.id}
+                  onClick={(e)=> setAnchorEl(e.currentTarget)}
+                />
+                <Popover
+                  id={props.id}
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={(e)=> setAnchorEl(null)}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  sx={{
+                    '.MuiPopover-paper': {
+                      overflowY: 'hidden',
+                      boxShadow: 'none'
+                    },
+                  }}
+                >
+                  <DialogMenu />
+                </Popover>
               </div>
             </div>
           </div>

@@ -4,24 +4,24 @@ import { ReactComponent as ArrowLeft } from '../../assets/icon/arrowLeft.svg'
 import { ReactComponent as EditIcon } from '../../assets/icon/editIcon.svg'
 import { ReactComponent as DeleteIcon } from '../../assets/icon/deleteIcon.svg'
 
-import './dialogMenu.scss'
+import styles from './dialogMenu.module.scss'
 
 const DialogMenu = () => {
   return (
-    <div className='dialog_menu'>
-      <div className='menu'>
+    <div className={styles.dialog_menu}>
+      <div className={styles.menu}>
         <ArrowRight /> 
         <p>Move Right</p>
       </div>
-      <div className='menu'>
+      <div className={styles.menu}>
         <ArrowLeft /> 
         <p>Move Left</p>
       </div>
-      <div className='menu'>
+      <div className={styles.menu}>
         <EditIcon /> 
         <p>Edit</p>
       </div>
-      <div className='menu_delete'>
+      <div className={styles.menu_delete}>
         <DeleteIcon /> 
         <p>Delete</p>
       </div>
