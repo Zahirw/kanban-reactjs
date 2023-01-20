@@ -1,10 +1,13 @@
 import React from 'react'
+
+// component
 import MModal from '@mui/material/Modal'
 import CloseIcon from '@mui/icons-material/Close';
 import Textfield from '../textfield/Textfield';
 import Description from '../description/Description';
 import Button from '../button/Button';
 import { ReactComponent as AlertIcon } from '../../assets/icon/alertIcon.svg'
+
 
 import styles from './modal.module.scss'
 const Modal = (props) => {
@@ -50,14 +53,16 @@ const Modal = (props) => {
           <Textfield 
             label='Task Name'
             placeholder='Input here'
+            onChange={props.handleName}
           />
           <div style={{marginTop: '49px'}}>
             {
               props.type === 'task' ? 
                 <Textfield 
-                  label='Task Name'
+                  label='Progress'
                   placeholder='Input here'
                   type='progress'
+                  onChange={props.handleProgress}
                 /> 
                 :
                 <Description 
@@ -77,6 +82,7 @@ const Modal = (props) => {
             <Button 
               type='submit'
               name='Save Task'
+              onClick={props.handleSubmit}
             />
           </div>
         </div>

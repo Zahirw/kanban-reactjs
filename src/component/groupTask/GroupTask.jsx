@@ -4,19 +4,22 @@ import { setItems } from '../../store/todos';
 
 // Component
 import Label from '../label/Label'
-import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress';
 import { ReactComponent as SettingIcon } from '../../assets/icon/settingIcon.svg'
 import ButtonNewTask from '../button/ButtonNewTask'
 import Modal from '../modal/Modal';
 
 // services
 import { getListItems } from "../../services/items/itemsService";
+import { createItems } from "../../services/items/itemsService";
 
 import styles from './groupTask.module.scss'
 
 const GroupTask = (props) => {
   const [items, setItems] = useState([])
   const [modal, setModal] =  useState(false)
+  const [name, setName] = useState('')
+  const [progress, setProgress] = useState('')
   const dispatch = useDispatch()
 
   const dateGroup = () => {
@@ -70,6 +73,24 @@ const GroupTask = (props) => {
         console.error(err)
     })
   }
+  
+
+  const handleSubmit = async() => {
+    const payload = {
+      name: name,
+      progress_percentage: progress,
+    }
+    console.log(payload)
+    await createItems(props.id, payload)
+      .then(response => {
+        console.log(response.data)
+        handleModal()
+        fetchItems()
+      })
+      .catch(err => {
+        console.error(err)
+    })
+  }
 
   useEffect(() => {
     fetchItems()
@@ -109,8 +130,12 @@ const GroupTask = (props) => {
       <ButtonNewTask onClick={handleModal}/>
       <Modal 
         visible={modal}
+        id={props.id}
         title='Create Task'
         type='task'
+        handleName={(e)=> setName(e.target.value)}
+        handleProgress={(e)=> setProgress(e.target.value)}
+        handleSubmit={handleSubmit}
         close={handleModal}
       />
       {/* <div className={styles.card_notask}>

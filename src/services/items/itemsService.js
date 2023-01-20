@@ -7,3 +7,10 @@ export const getListItems = (id) => {
     // data: payload,
   })
 }
+export const createItems = (id, data) => {
+  return apiClient({
+    method: 'post',
+    url: `todos/${id}/items`,
+    data
+  })
+}

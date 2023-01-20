@@ -14,6 +14,7 @@ $font-text: 'Nunito Sans';
 
 .task1 {
   width: 326px;
+  height: fit-content;
   color: $label-color-task1;
   border: 1px solid #4DB5BC;
   background-color: $background-task1;
@@ -29,6 +30,7 @@ $font-text: 'Nunito Sans';
 
 .task2 {
   width: 326px;
+  height: fit-content;
   color: $label-color-task2;
   border: 1px solid #FEEABC;
   background-color: $background-task2;
@@ -44,6 +46,7 @@ $font-text: 'Nunito Sans';
 
 .task3 {
   width: 326px;
+  height: fit-content;
   color: $label-color-task3;
   border: 1px solid #F5B1B7;
   background-color: $background-task3;
@@ -59,6 +62,7 @@ $font-text: 'Nunito Sans';
 
 .task4 {
   width: 326px;
+  height: fit-content;
   color: $label-color-task4;
   border: 1px solid #B8DBCA;
   background-color: $background-task4;
