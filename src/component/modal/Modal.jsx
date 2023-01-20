@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 // component
 import MModal from '@mui/material/Modal'
@@ -11,6 +12,7 @@ import { ReactComponent as AlertIcon } from '../../assets/icon/alertIcon.svg'
 
 import styles from './modal.module.scss'
 const Modal = (props) => {
+  const itemsEdit = useSelector((state) => state.todos.itemsEdit)
   return (
     <MModal
       open={props.visible}
@@ -54,6 +56,7 @@ const Modal = (props) => {
             label='Task Name'
             placeholder='Input here'
             onChange={props.handleName}
+            value={props.typeModal === 'Edit' ? itemsEdit.name : ''}
           />
           <div style={{marginTop: '49px'}}>
             {
@@ -63,6 +66,7 @@ const Modal = (props) => {
                   placeholder='Input here'
                   type='progress'
                   onChange={props.handleProgress}
+                  value={props.typeModal === 'Edit' ? itemsEdit.progress_percentage : ''}
                 /> 
                 :
                 <Description 

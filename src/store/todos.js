@@ -5,6 +5,7 @@ export const kanbanTodos = createSlice({
   initialState: {
     todos: [],
     items: [],
+    itemsEdit: {},
   },
   reducers: {
     setTodos: (state, action) => {
@@ -13,10 +14,13 @@ export const kanbanTodos = createSlice({
     setItems: (state, action) => {
       state.items = action.payload
     },
+    setItemsEdit: (state, action) => {
+      state.itemsEdit = action.payload
+    },
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { setTodos, setItems } = kanbanTodos.actions
+export const { setTodos, setItems, setItemsEdit } = kanbanTodos.actions
 
 export default kanbanTodos.reducer

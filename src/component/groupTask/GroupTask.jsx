@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { setItems } from '../../store/todos';
+import { useDispatch, useSelector } from 'react-redux';
+import { setItems, setItemsEdit } from '../../store/todos';
 
 // Component
 import LinearProgress from '@mui/material/LinearProgress';
@@ -12,18 +12,20 @@ import DialogMenu from '../dialogMenu/DialogMenu';
 import { ReactComponent as SettingIcon } from '../../assets/icon/settingIcon.svg'
 
 // services
-import { getListItems } from "../../services/items/itemsService";
-import { createItems } from "../../services/items/itemsService";
+import { getListItems, createItems, updateItems } from "../../services/items/itemsService";
 
 import styles from './groupTask.module.scss'
 
 const GroupTask = (props) => {
+  const itemsEdit = useSelector((state) => state.todos.itemsEdit)
+  const dispatch = useDispatch()
+
   const [items, setItems] = useState([])
   const [modal, setModal] =  useState(false)
+  const [typeModal, setTypeModal] = useState('')
   const [name, setName] = useState('')
   const [progress, setProgress] = useState('')
   const [anchorEl, setAnchorEl] = useState(null);
-  const dispatch = useDispatch()
   const open = Boolean(anchorEl);
 
   const dateGroup = () => {
@@ -41,7 +43,19 @@ const GroupTask = (props) => {
     }
   }
 
-  const handleModal = () => {
+  const handlePopOpen = (e, param) => {
+    setAnchorEl(e.currentTarget)
+    dispatch(setItemsEdit(param))
+    console.log(param)
+  }
+
+  const handlePopClose = () => {
+    setAnchorEl(null)
+    dispatch(setItemsEdit({}))
+  }
+
+  const handleModal = (param) => {
+    setTypeModal(param)
     setModal(!modal)
   }
   
@@ -80,20 +94,38 @@ const GroupTask = (props) => {
   
 
   const handleSubmit = async() => {
-    const payload = {
-      name: name,
-      progress_percentage: progress,
-    }
-    console.log(payload)
-    await createItems(props.id, payload)
+    if (typeModal === 'Edit') {
+      const payload = {
+        name: name,
+        progress_percentage: progress,
+        target_todo_id: props.id
+      }
+      await updateItems(props.id, payload, itemsEdit.id)
       .then(response => {
         console.log(response.data)
         handleModal()
+        handlePopClose()
         fetchItems()
       })
       .catch(err => {
         console.error(err)
-    })
+      })
+    }
+    else if (typeModal === 'Create') {
+      const payload = {
+        name: name,
+        progress_percentage: progress,
+      }
+      await createItems(props.id, payload)
+        .then(response => {
+          console.log(response.data)
+          handleModal()
+          fetchItems()
+        })
+        .catch(err => {
+          console.error(err)
+      })
+    }
   }
 
   useEffect(() => {
@@ -127,14 +159,14 @@ const GroupTask = (props) => {
               <div style={{textAlign: 'right'}}>
                 <SettingIcon 
                   style={{cursor: 'pointer'}}
-                  aria-describedby={props.id}
-                  onClick={(e)=> setAnchorEl(e.currentTarget)}
+                  aria-describedby={record}
+                  onClick={(e)=>handlePopOpen(e, record)}
                 />
                 <Popover
-                  id={props.id}
+                  id={record}
                   open={open}
                   anchorEl={anchorEl}
-                  onClose={(e)=> setAnchorEl(null)}
+                  onClose={handlePopClose}
                   anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'left',
@@ -146,18 +178,21 @@ const GroupTask = (props) => {
                     },
                   }}
                 >
-                  <DialogMenu />
+                  <DialogMenu 
+                    onEdit={()=>handleModal('Edit')}
+                  />
                 </Popover>
               </div>
             </div>
           </div>
         </div>
       )}
-      <ButtonNewTask onClick={handleModal}/>
+      <ButtonNewTask onClick={()=>handleModal('Create')}/>
       <Modal 
         visible={modal}
         id={props.id}
-        title='Create Task'
+        title={`${typeModal} Task`}
+        typeModal={typeModal}
         type='task'
         handleName={(e)=> setName(e.target.value)}
         handleProgress={(e)=> setProgress(e.target.value)}

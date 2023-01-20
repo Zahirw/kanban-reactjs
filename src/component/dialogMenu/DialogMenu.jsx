@@ -6,7 +6,7 @@ import { ReactComponent as DeleteIcon } from '../../assets/icon/deleteIcon.svg'
 
 import styles from './dialogMenu.module.scss'
 
-const DialogMenu = () => {
+const DialogMenu = (props) => {
   return (
     <div className={styles.dialog_menu}>
       <div className={styles.menu}>
@@ -17,7 +17,7 @@ const DialogMenu = () => {
         <ArrowLeft /> 
         <p>Move Left</p>
       </div>
-      <div className={styles.menu}>
+      <div className={styles.menu} onClick={props.onEdit}>
         <EditIcon /> 
         <p>Edit</p>
       </div>
