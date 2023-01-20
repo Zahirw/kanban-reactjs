@@ -91,7 +91,6 @@ const GroupTask = (props) => {
         console.error(err)
     })
   }
-  
 
   const handleSubmit = async() => {
     if (typeModal === 'Edit') {
@@ -126,6 +125,40 @@ const GroupTask = (props) => {
           console.error(err)
       })
     }
+  }
+
+  const handleRight = async() => {
+    const payload = {
+      // name: name,
+      // progress_percentage: progress,
+      target_todo_id: props.id+1
+    }
+    await updateItems(props.id, payload, itemsEdit.id)
+    .then(response => {
+      console.log(response.data)
+      handlePopClose()
+      fetchItems()
+    })
+    .catch(err => {
+      console.error(err)
+    })
+  }
+
+  const handleLeft = async() => {
+    const payload = {
+      // name: name,
+      // progress_percentage: progress,
+      target_todo_id: props.id-1
+    }
+    await updateItems(props.id, payload, itemsEdit.id)
+    .then(response => {
+      console.log(response.data)
+      handlePopClose()
+      fetchItems()
+    })
+    .catch(err => {
+      console.error(err)
+    })
   }
 
   useEffect(() => {
@@ -180,6 +213,8 @@ const GroupTask = (props) => {
                 >
                   <DialogMenu 
                     onEdit={()=>handleModal('Edit')}
+                    onRight={handleRight}
+                    onLeft={handleLeft}
                   />
                 </Popover>
               </div>
