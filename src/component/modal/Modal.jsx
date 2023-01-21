@@ -64,7 +64,7 @@ const Modal = (props) => {
               props.type === 'task' ? 
                 <Textfield 
                   label='Progress'
-                  placeholder='Input here'
+                  placeholder='70%'
                   type='progress'
                   onChange={props.handleProgress}
                   value={props.typeModal === 'Edit' ? itemsEdit.progress_percentage : ''}
