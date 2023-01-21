@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { setItems, setItemsEdit } from '../../store/todos';
+import { setItemsEdit } from '../../store/todos';
 
 // Component
 import LinearProgress from '@mui/material/LinearProgress';
@@ -176,7 +176,8 @@ const GroupTask = (props) => {
   }
 
   useEffect(() => {
-    fetchItems()
+    fetchItems()  
+    /* eslint-disable */
   }, []);
   return (
     <div className={styles[props.type]}>

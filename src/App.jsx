@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTodos } from "./store/todos";
 
 // Component
-import Button from "./component/button/Button";
+// import Button from "./component/button/Button";
 import GroupTask from "./component/groupTask/GroupTask";
 
 // Services
@@ -27,6 +27,7 @@ function App() {
   }
   useEffect(() => {
     fetchTodos()
+    /* eslint-disable */
   },[])
 
   return (
