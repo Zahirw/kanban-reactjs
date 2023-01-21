@@ -1,0 +1,129 @@
+$label-color-task1: #01959F;
+$background-task1: #F7FEFF;
+
+$label-color-task2: #FA9810;
+$background-task2: #FFFCF5;
+
+$label-color-task3: #E11428;
+$background-task3: #FFFAFA;
+
+$label-color-task4: #43936C;
+$background-task4: #F8FBF9;
+
+$font-text: 'Nunito Sans';
+
+.task1 {
+  width: 326px;
+  height: fit-content;
+  color: $label-color-task1;
+  border: 1px solid #4DB5BC;
+  background-color: $background-task1;
+  border-radius: 4px;
+  font-family: $font-text;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  margin: 0 8px 50px 0;
+  padding: 16px;
+}
+
+.task2 {
+  width: 326px;
+  height: fit-content;
+  color: $label-color-task2;
+  border: 1px solid #FEEABC;
+  background-color: $background-task2;
+  border-radius: 4px;
+  font-family: $font-text;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  margin: 0 8px 50px 8px;
+  padding: 16px;
+}
+
+.task3 {
+  width: 326px;
+  height: fit-content;
+  color: $label-color-task3;
+  border: 1px solid #F5B1B7;
+  background-color: $background-task3;
+  border-radius: 4px;
+  font-family: $font-text;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  margin: 0 8px 50px 8px;
+  padding: 16px;
+}
+
+.task4 {
+  width: 326px;
+  height: fit-content;
+  color: $label-color-task4;
+  border: 1px solid #B8DBCA;
+  background-color: $background-task4;
+  border-radius: 4px;
+  font-family: $font-text;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  margin: 0 0 50px 8px;
+  padding: 16px;
+}
+
+.date {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  color: #404040;
+  margin: 8px 0 8px 0;
+}
+
+.card {
+  width: 298px;
+  background: #FAFAFA;
+  padding: 16px;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  p {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #404040;
+  }
+}
+
+.card_notask {
+  width: 298px;
+  height: 40px;
+  background: #FAFAFA;
+  padding: 16px;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+
+  p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #757575;
+  }
+
+}
+
+.progress_bar {
+  border-top: 1px dashed #E0E0E0;
+  padding-top: 12px;
+  display: grid;
+  grid-template-columns: 175px 25px auto;
+  gap: 12px;
+  align-items: center;
+}

@@ -1,0 +1,27 @@
+.textfield {
+  display: flex;
+  flex-direction: column;
+}
+
+.label_text {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  color: #404040;
+  margin-bottom: 8px;
+}
+
+.progress {
+  max-width: 143px;
+}
+input {
+  height: 40px;
+  box-sizing: border-box;
+  border: 2px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 8px 0 8px 16px;
+}
+input:focus-visible {
+  outline: 2px solid #01959F;
+}
