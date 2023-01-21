@@ -135,8 +135,9 @@ const GroupTask = (props) => {
     await updateItems(props.id, payload, itemsEdit.id)
     .then(response => {
       console.log(response.data)
-      handlePopClose()
-      fetchItems()
+      window.location.reload()
+      // handlePopClose()
+      // fetchItems()
     })
     .catch(err => {
       console.error(err)
@@ -152,8 +153,9 @@ const GroupTask = (props) => {
     await updateItems(props.id, payload, itemsEdit.id)
     .then(response => {
       console.log(response.data)
-      handlePopClose()
-      fetchItems()
+      window.location.reload()
+      // handlePopClose()
+      // fetchItems()
     })
     .catch(err => {
       console.error(err)
@@ -182,59 +184,64 @@ const GroupTask = (props) => {
         type={props.type}
       />
       <p className={styles.date}>{dateGroup()}</p>
-      
-      {items.map(record=>
-        <div className={styles.card} key={record.id}>
-          <div>
-            <p>{record.name}</p>
-            <div className={styles.progress_bar}>
-              <LinearProgress
-                variant="determinate" 
-                value={record.progress_percentage}
-                sx={{
-                  '& .MuiLinearProgress-bar1Determinate': {
-                    backgroundColor: '#01959F',
-                  },
-                  backgroundColor: '#EDEDED',
-                  height: '16px',
-                  borderRadius: '25px',
-                }}
-              />
-              <p>{record.progress_percentage}%</p>
-              <div style={{textAlign: 'right'}}>
-                <SettingIcon 
-                  style={{cursor: 'pointer'}}
-                  aria-describedby={record}
-                  onClick={(e)=>handlePopOpen(e, record)}
-                />
-                <Popover
-                  id={record}
-                  open={open}
-                  anchorEl={anchorEl}
-                  onClose={handlePopClose}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
+      {
+        items.length ? 
+        items.map(record=>
+          <div className={styles.card} key={record.id}>
+            <div>
+              <p>{record.name}</p>
+              <div className={styles.progress_bar}>
+                <LinearProgress
+                  variant="determinate" 
+                  value={record.progress_percentage}
                   sx={{
-                    '.MuiPopover-paper': {
-                      overflowY: 'hidden',
-                      boxShadow: 'none'
+                    '& .MuiLinearProgress-bar1Determinate': {
+                      backgroundColor: '#01959F',
                     },
+                    backgroundColor: '#EDEDED',
+                    height: '16px',
+                    borderRadius: '25px',
                   }}
-                >
-                  <DialogMenu 
-                    onEdit={()=>handleModal('Edit')}
-                    onRight={handleRight}
-                    onLeft={handleLeft}
-                    onDelete={()=>handleModal('Delete')}
+                />
+                <p>{record.progress_percentage}%</p>
+                <div style={{textAlign: 'right'}}>
+                  <SettingIcon 
+                    style={{cursor: 'pointer'}}
+                    aria-describedby={record}
+                    onClick={(e)=>handlePopOpen(e, record)}
                   />
-                </Popover>
+                  <Popover
+                    id={record}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handlePopClose}
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    }}
+                    sx={{
+                      '.MuiPopover-paper': {
+                        overflowY: 'hidden',
+                        boxShadow: 'none'
+                      },
+                    }}
+                  >
+                    <DialogMenu 
+                      onEdit={()=>handleModal('Edit')}
+                      onRight={handleRight}
+                      onLeft={handleLeft}
+                      onDelete={()=>handleModal('Delete')}
+                    />
+                  </Popover>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        ) :
+        <div className={styles.card_notask}>
+        <p>No Task</p>
+      </div>
+      }
       <ButtonNewTask onClick={()=>handleModal('Create')}/>
       <Modal 
         visible={modal}
@@ -249,9 +256,6 @@ const GroupTask = (props) => {
         handleDelete={handleDelete}
         close={handleModal}
       />
-      {/* <div className={styles.card_notask}>
-        <p>No Task</p>
-      </div> */}
     </div>
   )
 }
