@@ -1,11 +1,11 @@
 import React from 'react'
 
-import './label.scss'
+import styles from './label.module.scss'
 
 const Label = (props) => {
   const numberTask = props.type.charAt(4)
   return (
-    <div className={props.type}>
+    <div className={styles[props.type]} data-cy='label'>
       Group Task {numberTask}
     </div>
   )
