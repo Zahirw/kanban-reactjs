@@ -6,10 +6,11 @@ const apiClient = axios.create({
     'Content-Type': 'application/json',
   },
 })
+const token = process.env.REACT_APP_TOKEN
 
 apiClient.interceptors.request.use(
   request => {
-    request.headers.Authorization = `Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMTUsImV4cCI6MTY4MjgxOTMxOH0.DOAeBDtmNZF7u7vLbkZvkSnKg9b8yr29looEbqQ23S0`;
+    request.headers.Authorization = `Bearer ${token}`;
     request.headers.Accept = "application/json";
     return request
   },
