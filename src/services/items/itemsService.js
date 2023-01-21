@@ -20,3 +20,9 @@ export const updateItems = (id, data, itemId) => {
     data
   })
 }
+export const deleteItems = (id, itemId) => {
+  return apiClient({
+    method: 'delete',
+    url: `todos/${id}/items/${itemId}`,
+  })
+}

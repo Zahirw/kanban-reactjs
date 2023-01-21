@@ -43,6 +43,7 @@ const Modal = (props) => {
             <Button 
               type='delete'
               name='Delete'
+              onClick={props.handleDelete}
             />
           </div>
         </div>

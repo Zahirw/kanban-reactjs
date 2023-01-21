@@ -12,7 +12,7 @@ import DialogMenu from '../dialogMenu/DialogMenu';
 import { ReactComponent as SettingIcon } from '../../assets/icon/settingIcon.svg'
 
 // services
-import { getListItems, createItems, updateItems } from "../../services/items/itemsService";
+import { getListItems, createItems, updateItems, deleteItems } from "../../services/items/itemsService";
 
 import styles from './groupTask.module.scss'
 
@@ -101,7 +101,6 @@ const GroupTask = (props) => {
       }
       await updateItems(props.id, payload, itemsEdit.id)
       .then(response => {
-        console.log(response.data)
         handleModal()
         handlePopClose()
         fetchItems()
@@ -153,6 +152,19 @@ const GroupTask = (props) => {
     await updateItems(props.id, payload, itemsEdit.id)
     .then(response => {
       console.log(response.data)
+      handlePopClose()
+      fetchItems()
+    })
+    .catch(err => {
+      console.error(err)
+    })
+  }
+
+  const handleDelete = async() => {
+    await deleteItems(props.id, itemsEdit.id)
+    .then(response => {
+      console.log(response.data)
+      handleModal()
       handlePopClose()
       fetchItems()
     })
@@ -215,6 +227,7 @@ const GroupTask = (props) => {
                     onEdit={()=>handleModal('Edit')}
                     onRight={handleRight}
                     onLeft={handleLeft}
+                    onDelete={()=>handleModal('Delete')}
                   />
                 </Popover>
               </div>
@@ -229,9 +242,11 @@ const GroupTask = (props) => {
         title={`${typeModal} Task`}
         typeModal={typeModal}
         type='task'
+        isDelete={typeModal === 'Delete'}
         handleName={(e)=> setName(e.target.value)}
         handleProgress={(e)=> setProgress(e.target.value)}
         handleSubmit={handleSubmit}
+        handleDelete={handleDelete}
         close={handleModal}
       />
       {/* <div className={styles.card_notask}>

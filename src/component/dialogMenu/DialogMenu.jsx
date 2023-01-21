@@ -29,7 +29,7 @@ const DialogMenu = (props) => {
         <EditIcon /> 
         <p>Edit</p>
       </div>
-      <div className={styles.menu_delete}>
+      <div className={styles.menu_delete} onClick={props.onDelete}>
         <DeleteIcon /> 
         <p>Delete</p>
       </div>
