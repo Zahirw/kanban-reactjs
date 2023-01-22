@@ -1,7 +1,7 @@
 .btn_submit {
   width: 97px;
   height: 32px;
-  background: #01959F;
+  background-color: #01959f;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   border-radius: 8px;
   color: white;
@@ -10,13 +10,13 @@
 }
 
 .btn_submit:hover {
-  background: #017e87;
+  background-color: #017e87;
 }
 
 .btn_delete {
   width: 97px;
   height: 32px;
-  background: #E11428;
+  background-color: #E11428;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   border-radius: 8px;
   color: white;
@@ -25,13 +25,13 @@
 }
 
 .btn_delete:hover {
-  background: #cf1325;
+  background-color: #cf1325;
 }
 
 .btn_cancel {
   width: 76px;
   height: 32px;
-  background: #fff;
+  background-color: #fff;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   border-radius: 8px;
   color: black;
@@ -40,5 +40,5 @@
 }
 
 .btn_cancel:hover {
-  background: #f2f2f2;
+  background-color: #f2f2f2;
 }

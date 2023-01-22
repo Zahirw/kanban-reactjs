@@ -1,9 +1,9 @@
 import React from 'react'
 
-import './button.scss'
+import styles from './button.module.scss'
 const Button = (props) => {
   return (
-    <button className={`btn_${props.type}`} onClick={props.onClick}>{props.name}</button>
+    <button data-cy='btn' className={styles[`btn_${props.type}`]} onClick={props.onClick}>{props.name}</button>
   )
 }
 

@@ -43,6 +43,8 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^12.3.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
     "webpack": "^5.75.0"
