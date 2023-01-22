@@ -28,7 +28,7 @@ describe('template spec', () => {
     cy.contains('tes create from cypress').should('be.visible')
   })
   
-  it('edit new task', () => {
+  it('edit task', () => {
     cy.visit('https://kanban-reactjs.netlify.app/')
     cy.contains('tes create from cypress').parent().children('div').children('div').children('svg').click()
     cy.contains('Edit').click({force: true})
@@ -40,7 +40,22 @@ describe('template spec', () => {
     cy.contains('tes create from cypress edit').should('be.visible')
   })
 
-  it('edit new task', () => {
+  it('Move right task', () => {
+    cy.visit('https://kanban-reactjs.netlify.app/')
+    cy.contains('tes create from cypress edit').parent().children('div').children('div').children('svg').click()
+    cy.contains('Move Right').click({force: true})
+    cy.contains('Group Task 2').parent().children('div', '.card').contains('tes create from cypress edit').should('be.visible')
+  })
+
+
+  it('Move left task', () => {
+    cy.visit('https://kanban-reactjs.netlify.app/')
+    cy.contains('tes create from cypress edit').parent().children('div').children('div').children('svg').click()
+    cy.contains('Move Left').click({force: true})
+    cy.contains('Group Task 1').parent().children('div', '.card').contains('tes create from cypress edit').should('be.visible')
+  })
+
+  it('Delete task', () => {
     cy.visit('https://kanban-reactjs.netlify.app/')
     cy.contains('tes create from cypress edit').parent().children('div').children('div').children('svg').click()
     cy.contains('Delete').click({force: true})
