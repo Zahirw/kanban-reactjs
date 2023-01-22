@@ -9,7 +9,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/v1",
-    element: <HomeView to="/"/>,
+    element: <HomeView />,
   },
 ]);
 
